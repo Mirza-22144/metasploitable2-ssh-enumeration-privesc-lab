@@ -10,3 +10,9 @@
 
 ```bash
 msfconsole
+
+
+
+search ssh_login
+use auxiliary/scanner/ssh/ssh_login
+show options
