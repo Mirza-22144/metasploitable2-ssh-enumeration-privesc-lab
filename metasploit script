@@ -1,1 +1,39 @@
+# Metasploitable 2 - safe recon resource script (no credential attacks)
+# Run with: msfconsole -q -r metasploitable_recon.rc
+
+# Optional: start logging everything you do
+spool metasploit_session.log
+
+# Basic setup
+workspace -a metasploitable2_lab
+setg RHOSTS 192.168.1.119
+
+# Check DB status (optional)
+db_status
+
+# SSH version scan (safe)
+use auxiliary/scanner/ssh/ssh_version
+set RPORT 22
+run
+
+# SMB version scan (safe)
+use auxiliary/scanner/smb/smb_version
+set RPORT 445
+run
+
+# FTP version scan (safe)
+use auxiliary/scanner/ftp/ftp_version
+set RPORT 21
+run
+
+# HTTP title scan (safe)
+use auxiliary/scanner/http/title
+set RPORT 80
+run
+
+# Stop logging
+spool off
+
+# Exit
+exit -y
 
