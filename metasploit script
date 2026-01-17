@@ -42,3 +42,18 @@ whoami
 hostname
 uname -a
 ifconfig
+
+
+sudo -l
+User msfadmin may run the following commands on this host:
+    (ALL) ALL
+
+
+sudo su
+whoami
+id
+
+
+root
+uid=0(root) gid=0(root) groups=0(root)
+
