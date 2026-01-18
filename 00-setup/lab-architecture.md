@@ -47,9 +47,6 @@ This repository is intended to be **portfolio-safe** and avoids publishing crede
 - **Name:** Metasploitable 2 (x86 emulation)
 - **Role:** Intentionally vulnerable target for training and documentation
 
----
 
-## Network Design
 
-### Topology
 
