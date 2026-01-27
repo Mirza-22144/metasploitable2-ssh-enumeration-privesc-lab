@@ -40,6 +40,7 @@ To demonstrate a more technical and realistic risk, I moved beyond the banner an
 ---
 
 ## Evidence
+- `03-enumeration/23-Telnet/images`
 - **Enumeration write-up:** `23-telnet-enumeration.md`
 - **Raw banner output (sanitized):** `evidence/telnet-banner.txt`
 - **Session capture (sanitized):** `../../06-evidence/commands-output/telnet-session-capture.txt`
