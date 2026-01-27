@@ -18,9 +18,16 @@ This folder documents the **enumeration phase** for **Port 23 (Telnet)** on the 
 
 ---
 
+## Why I Didn’t Stop at the Banner
+During initial interaction, the Telnet banner provided an **overly direct entry point** (default credentials presented immediately). While this is a valid misconfiguration, it’s also **unrealistic in most real environments**, where services rarely advertise credentials so openly.
+
+To demonstrate a more technical and realistic risk, I moved beyond the banner and performed **packet sniffing** to prove Telnet’s core weakness: **credentials and session data can be intercepted in cleartext** by anyone with visibility on the network path.
+
+---
+
 ## Key Findings (High Level)
 - Telnet is running and accessible on **23/tcp**.
-- The service presents a banner indicating **default credentials** (high-risk misconfiguration).
+- The service banner discloses **default credentials** (high-risk misconfiguration).
 - Packet analysis confirms Telnet traffic (including authentication strings) can be observed in **cleartext** by a network observer.
 
 ---
