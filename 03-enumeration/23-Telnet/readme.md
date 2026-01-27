@@ -1,20 +1,56 @@
-Port 23 telnet TCP
+# 23/tcp — Telnet Enumeration (Cleartext Credential Risk) 🛰️
 
-TCP is specifically vulnerable because it does not encrypt data at all and sends passwords and user info in plaintext 
+> **Scope:** Authorized local lab only (Metasploitable 2)  
+> **Target:** `192.168.1.122`  
+> **Service:** Telnet (`23/tcp`)  
+> **Detected Service/Version:** `Linux telnetd` (via Nmap)
 
+---
 
-I will target this port as it may provide me with information and access In a simple process without need for complex decryption
+## Overview
+This folder documents the **enumeration phase** for **Port 23 (Telnet)** on the target VM. The goal of this stage is to:
+- confirm the Telnet service is reachable,
+- identify any banner / login behavior,
+- validate the protocol-level risk of **cleartext transmission** using packet analysis,
+- and store **sanitized evidence** suitable for a public GitHub portfolio.
 
-we begin with banner grabbing, trying to interc at with the service.
-telnet 192.168.1.122
+> This repo does **not** include weaponized exploit steps, payloads, or credential lists.
 
-after running the telnet command a banner dsiplayed, expicitly showing the login credentials for the system, an obvious vuneablity. 
+---
 
+## Key Findings (High Level)
+- Telnet is running and accessible on **23/tcp**.
+- The service presents a banner indicating **default credentials** (high-risk misconfiguration).
+- Packet analysis confirms Telnet traffic (including authentication strings) can be observed in **cleartext** by a network observer.
 
-since the vunerabolty was too obvious and unrealsitic i cghhose to ingnore these credntials. 
-instead i aim to exploit the plain text vunerablity of telnet through packet sniffing. 
+---
 
+## Method Summary
+1. **Service confirmation** with Nmap (port open + service fingerprint).
+2. **Banner interaction** via Telnet client to observe login prompt/banner behavior.
+3. **Protocol analysis** using Wireshark to verify whether login/session data is encrypted (it is not).
 
+---
 
+## Evidence
+- **Enumeration write-up:** `23-telnet-enumeration.md`
+- **Raw banner output (sanitized):** `evidence/telnet-banner.txt`
+- **Session capture (sanitized):** `../../06-evidence/commands-output/telnet-session-capture.txt`
+- **Wireshark proof screenshot:** `../../06-evidence/screenshots/telnet-wireshark-cleartext.png`
 
-PACKET SNIFFING: METAPLOITABLE 2 Wireshark
+---
+
+## How This Maps to a Finding
+This enumeration supports **Finding F-003** (Telnet cleartext transmission / insecure remote access).  
+Remediation steps are documented in:
+- `../../05-remediation/23-telnet-remediation.md`
+
+---
+
+## Notes on Safe Redaction (Public Repo)
+Do **not** upload:
+- passwords/credentials (even defaults)
+- packet capture files (`.pcap`) containing real cleartext logins
+- hashes, `/etc/shadow`, keys, tokens, or exploit payloads
+
+Use screenshots and sanitized text outputs instead.
